@@ -64,7 +64,7 @@ quizStart.addEventListener("click", function () {
 function showQuestion(q) {
     if (q > 4) { // remember, start at 0 when counting
         // end quiz, show score
-        // endQuiz(seconds)
+        endQuiz(seconds)
     } else {
         // show question
         let element = document.getElementById("question");
@@ -83,6 +83,7 @@ function showQuestion(q) {
 // Create buttons for each possible answer
 function guess(q, id) {
     let button = document.getElementById("btn" + id)
+    // button.removeEventListener('click')
     button.addEventListener('click', function () {
         if (id !== correctArray[q]) {
             seconds -= 10; // decrement timer if wrong answer is chosen
@@ -99,12 +100,13 @@ function guess(q, id) {
 //Tell com which is the right and which are the wrong answers
 //Have an alert to say if the person got the question right or wrong
 
+// End quiz, display final score
+function endQuiz(score) {
+    scoreboard.style.display = "block"
 
-// Store the score
-// localStorage.setItem("initials", "");
-// // Retrieve the score
-// document.getElementById("result").innerHTML = localStorage.getItem("initials");
-
+    document.getElementById('scoreDisplay').textContent = "Your final score is " + score
+    
+}
 
 
 
