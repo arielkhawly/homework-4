@@ -62,10 +62,7 @@ quizStart.addEventListener("click", function () {
     countdown();
 });
 
-
-//Change screens to show question one
-
-// Show the question on the page
+// When user presses start, show the question on the page
 function showQuestion(q) {
     if (q > 4) { // remember, start at 0 when counting
         // end quiz, show score
@@ -89,19 +86,21 @@ function showQuestion(q) {
 // Create buttons for each possible answer
 function guess(q, id) {
     let button = document.getElementById("btn" + id)
-    // button.removeEventListener('click')
-    button.addEventListener('click', function () {
-        if (id !== correctArray[q]) {
-            seconds -= 10; // decrement timer if wrong answer is chosen
-            timer.textContent = 'Time: ' + seconds;
-            // don't forget to update the visuals
-            status.textContent = "Wrong!"
-        } else {
-            status.textContent = "Correct!"
-        }
-        currentQuestion++;
-        showQuestion(currentQuestion); // move on to the next question
-    })
+    button.removeEventListener('click')
+    button.addEventListener('click', )
+}
+
+function () {
+    if (id !== correctArray[q]) {
+        seconds -= 10; // decrement timer if wrong answer is chosen
+        timer.textContent = 'Time: ' + seconds;
+        // don't forget to update the visuals
+        status.textContent = "Wrong!"
+    } else {
+        status.textContent = "Correct!"
+    }
+    currentQuestion++;
+    showQuestion(currentQuestion); // move on to the next question
 }
 
 // End quiz, display final score
