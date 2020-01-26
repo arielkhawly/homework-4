@@ -80,8 +80,6 @@ function showQuestion(q) {
         // show options
         let choices = choicesArray[q];
         for (let i = 0; i < choices.length; i++) {
-            // let element = document.getElementById("option" + i);
-            // element.textContent = choices[i];
             guess(q, i, choices[i]);
         }
     }
@@ -89,9 +87,9 @@ function showQuestion(q) {
 
 // Create buttons for each possible answer
 function guess(q, id, choiceText) {
-    let button = document.createElement("button")
-    button.id = "button" + id
-    button.innerHTML = `<span id="option${id}">${choiceText}</span>`
+    let button = document.createElement("button") // Create a button
+    
+    button.textContent = choiceText // Set the button text
     button.addEventListener('click', function () {
         if (id !== correctArray[q]) {
             seconds -= 10; // decrement timer if wrong answer is chosen
@@ -104,7 +102,8 @@ function guess(q, id, choiceText) {
         currentQuestion++;
         showQuestion(currentQuestion); // move on to the next question
     })
-    choiceDiv.appendChild(button)
+    
+    choiceDiv.appendChild(button) // add button to the page
 }
 
 // End quiz, display final score
