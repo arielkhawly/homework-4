@@ -1,2 +1,11 @@
-body    
-    
+body    {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+#intro {
+    text-align: center;
+}
+#viewscores {
+    margin-left: 0px;
+    margin-top: 0px;
+}

@@ -102,7 +102,7 @@ function guess(q, id, choiceText) {
         currentQuestion++;
         showQuestion(currentQuestion); // move on to the next question
     })
-    
+
     choiceDiv.appendChild(button) // add button to the page
 }
 
@@ -135,7 +135,14 @@ scoreForm.addEventListener('submit', function (event) {
         scoreList.innerHTML += `<li>${enteredInitials} - ${seconds}</li>`
     }
 })
-
+//view highscores button
+let viewScores = document.getElementById("viewscores")
+viewScores.addEventListener('click', function(){
+    // hide intro page
+    intro.style.display = "none"
+    //show scorepage
+    scorePage.style.display = "block"
+})
 // Go back button
 let goBack = document.getElementById("goBack")
 goBack.addEventListener('click', function () {
