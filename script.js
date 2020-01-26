@@ -35,6 +35,7 @@ let scoreboard = document.getElementById('scoreboard')
 let quizDiv = document.getElementById("quiz");
 let scorePage = document.getElementById("scorePage")
 let intro = document.getElementById("intro")
+let choiceDiv = document.getElementById("choices")
 let timerInterval;
 
 function countdown() {
@@ -73,34 +74,37 @@ function showQuestion(q) {
         let element = document.getElementById("question");
         element.textContent = questionArray[q];
 
+        // Reset innerHTML
+        choiceDiv.innerHTML = ""
+
         // show options
         let choices = choicesArray[q];
         for (let i = 0; i < choices.length; i++) {
-            let element = document.getElementById("option" + i);
-            element.textContent = choices[i];
-            guess(q, i);
+            // let element = document.getElementById("option" + i);
+            // element.textContent = choices[i];
+            guess(q, i, choices[i]);
         }
     }
 }
 
 // Create buttons for each possible answer
-function guess(q, id) {
-    let button = document.getElementById("btn" + id)
-    button.removeEventListener('click')
-    button.addEventListener('click', )
-}
-
-function () {
-    if (id !== correctArray[q]) {
-        seconds -= 10; // decrement timer if wrong answer is chosen
-        timer.textContent = 'Time: ' + seconds;
-        // don't forget to update the visuals
-        status.textContent = "Wrong!"
-    } else {
-        status.textContent = "Correct!"
-    }
-    currentQuestion++;
-    showQuestion(currentQuestion); // move on to the next question
+function guess(q, id, choiceText) {
+    let button = document.createElement("button")
+    button.id = "button" + id
+    button.innerHTML = `<span id="option${id}">${choiceText}</span>`
+    button.addEventListener('click', function () {
+        if (id !== correctArray[q]) {
+            seconds -= 10; // decrement timer if wrong answer is chosen
+            timer.textContent = 'Time: ' + seconds;
+            // don't forget to update the visuals
+            status.textContent = "Wrong!"
+        } else {
+            status.textContent = "Correct!"
+        }
+        currentQuestion++;
+        showQuestion(currentQuestion); // move on to the next question
+    })
+    choiceDiv.appendChild(button)
 }
 
 // End quiz, display final score
