@@ -3,33 +3,59 @@
 
 <head>
     <title> JS Quiz</title>
-    <link rel="stylesheet" href
+    <link rel="stylesheet" href="style.css">
+    <script> src = "script.js"</script>
 </head>
 
 <body>
     <h1>Coding Quiz Challenge</h1>
     <p>Try to answer the following code-related questions within the time limit. Keep in mind that wrong answers will
         penalize your scoretime by 10 seconds!</p>
-        <div id = "start">
-    <button>Start Quiz</button>
+    <div id="start">
+        <button>Start Quiz</button>
     </div>
     <div id="quiz">
+        <form id="q1" name="q1">
+            <p>Commonly used data types do NOT include:</p>
+            <input type="radio" name="q1" value="strings"> Strings<br>
+            <input type="radio" name="q1" value="booleans"> Booleans<br>
+            <input type="radio" name="q1" value="alerts"> Alerts<br>
+            <input type="radio" name="q1" value="numbers"> Numbers
+        </form>
+        <form id="q2" name="q2">
+            <p>The condition in an if/else statement is enclosed within ______.</p>
+            <input type="radio" name="q2" value="quotes"> Quotes<br>
+            <input type="radio" name="q2" value="curlyBrackets"> Curly Brackets<br>
+            <input type="radio" name="q2" value="parentheses"> Parentheses<br>
+            <input type="radio" name="q2" value="squareBrackets"> Square Brackets
+        </form>
+        <form id="q3" name="q3">
+            <p>Arrays in JavaScript can be used to store ______.</p>
+            <input type="radio" name="q3" value="numbersAndStrings"> Numbers and Strings<br>
+            <input type="radio" name="q3" value="otherArrays"> Other Arrays<br>
+            <input type="radio" name="q3" value="booleans1"> Booleans<br>
+            <input type="radio" name="q3" value="allAbove"> All of the Above
+        </form>
+        <form id="q4" name="q4">
+            <p>String values must be closed within ____ when being assigned to variables.</p>
+            <input type="radio" name="q4" value="commas"> Commas<br>
+            <input type="radio" name="q4" value="curlyBrackets1"> Curly Brackets <br>
+            <input type="radio" name="q4" value="quotes"> Quotes<br>
+            <input type="radio" name="q4" value="parentheses1"> Parentheses
+        </form>
+        <form id="q5" name="q5">
+            <p>A very useful tool used during development and debugging for printing content to the debugger is:</p>
+            <input type="radio" name="q5" value="js"> JavaScript<br>
+            <input type="radio" name="q5" value="terminalBash"> Terminal/Bash<br>
+            <input type="radio" name="q5" value="forLoops"> For Loops<br>
+            <input type="radio" name="q5" value="consoleLog"> Console.log
+        </form>
+    </div>
+
+    <div></div>
+    <div id="score">
 
     </div>
-    <div id = "score">
-
-    </div>
-    <script>
-        //Allow User to start the quiz
-        //Change screens to show question one
-        // Create buttons for each possible answer
-        //Tell com which is the right and which are the wrong answers
-        //Have an alert to say if the person got the question right or wrong
-        //Factor it into their score
-
-
-
-    </script>
 </body>
 
 </html>
