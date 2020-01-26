@@ -33,11 +33,12 @@ let timer = document.getElementById('timer')
 let status = document.getElementById('status') // Tell whether we got a question right or wrong
 let scoreboard = document.getElementById('scoreboard')
 let quizDiv = document.getElementById("quiz");
-let timerInterval
+let scorePage = document.getElementById("scorePage")
+let intro = document.getElementById("intro")
+let timerInterval;
 
 function countdown() {
     // Hide the intro screen
-    let intro = document.getElementById("intro")
     intro.style.display = "none"
 
     // show the first question
@@ -114,13 +115,12 @@ function endQuiz(score) {
 // Add user's initials and score to rankings
 let scoreForm = document.getElementById("enterInitials")
 
-scoreForm.addEventListener('submit', function(event) {
+scoreForm.addEventListener('submit', function (event) {
     let scoreList = document.getElementById("scoreList")
     event.preventDefault()
 
     // Grab the initials the user entered
     let enteredInitials = document.getElementById("initials").value
-    console.log(enteredInitials)
 
     // Hide the form
     scoreboard.style.display = "none"
@@ -128,11 +128,25 @@ scoreForm.addEventListener('submit', function(event) {
     // At least check if they entered something
     if (enteredInitials.length > 0) {
         // show the table
-        document.getElementById("scorePage").style.display = "block"
+        scorePage.style.display = "block"
         // Add a list item
         scoreList.innerHTML += `<li>${enteredInitials} - ${seconds}</li>`
     }
 })
 
+// Go back button
+let goBack = document.getElementById("goBack")
+goBack.addEventListener('click', function () {
+    // Hide the score page
+    scorePage.style.display = "none"
+
+    //  reset everything
+    seconds = 75
+    currentQuestion = 0
+
+    // Show the intro
+    intro.style.display = "block"
+
+})
 
 
