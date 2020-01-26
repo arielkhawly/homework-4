@@ -32,6 +32,8 @@ let seconds = 75 // Initial state of timer
 let timer = document.getElementById('timer')
 let status = document.getElementById('status') // Tell whether we got a question right or wrong
 let scoreboard = document.getElementById('scoreboard')
+let quizDiv = document.getElementById("quiz");
+let timerInterval
 
 function countdown() {
     // Hide the intro screen
@@ -39,12 +41,14 @@ function countdown() {
     intro.style.display = "none"
 
     // show the first question
+    quizDiv.style.display = "block"
     showQuestion(currentQuestion);
     timer.textContent = "Time: " + seconds;
 
-    let timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         if (seconds <= 0) {
             clearInterval(timerInterval);
+            endQuiz(seconds);
         } else {
             seconds--;
             timer.textContent = 'Time:' + seconds;
@@ -64,6 +68,7 @@ quizStart.addEventListener("click", function () {
 function showQuestion(q) {
     if (q > 4) { // remember, start at 0 when counting
         // end quiz, show score
+        clearInterval(timerInterval)
         endQuiz(seconds)
     } else {
         // show question
@@ -87,7 +92,7 @@ function guess(q, id) {
     button.addEventListener('click', function () {
         if (id !== correctArray[q]) {
             seconds -= 10; // decrement timer if wrong answer is chosen
-            timer.textContent = 'Time: ' + seconds; 
+            timer.textContent = 'Time: ' + seconds;
             // don't forget to update the visuals
             status.textContent = "Wrong!"
         } else {
@@ -97,16 +102,37 @@ function guess(q, id) {
         showQuestion(currentQuestion); // move on to the next question
     })
 }
-//Tell com which is the right and which are the wrong answers
-//Have an alert to say if the person got the question right or wrong
 
 // End quiz, display final score
 function endQuiz(score) {
-    scoreboard.style.display = "block"
+    quizDiv.style.display = "none" // hide the quiz div
 
+    scoreboard.style.display = "block"
     document.getElementById('scoreDisplay').textContent = "Your final score is " + score
-    
 }
+
+// Add user's initials and score to rankings
+let scoreForm = document.getElementById("enterInitials")
+
+scoreForm.addEventListener('submit', function(event) {
+    let scoreList = document.getElementById("scoreList")
+    event.preventDefault()
+
+    // Grab the initials the user entered
+    let enteredInitials = document.getElementById("initials").value
+    console.log(enteredInitials)
+
+    // Hide the form
+    scoreboard.style.display = "none"
+
+    // At least check if they entered something
+    if (enteredInitials.length > 0) {
+        // show the table
+        document.getElementById("scorePage").style.display = "block"
+        // Add a list item
+        scoreList.innerHTML += `<li>${enteredInitials} - ${seconds}</li>`
+    }
+})
 
 
 

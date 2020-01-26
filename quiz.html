@@ -18,7 +18,7 @@
     <!-- Scorecounter -->
     <p>View Highscores</p>
     <!-- Quiz Questions -->
-    <div id="quiz">
+    <div id="quiz" style="display: none;">
         <p id="timer"></p>
         <h1 id="question"></h1>
 
@@ -32,13 +32,23 @@
         <h2 id="status"></h2>
     </div>
 
-    <div id="scoreboard" >
+    <!-- End screen -->
+    <div id="scoreboard" style="display: none;">
         <h1>All Done!</h1>
         <p id="scoreDisplay"></p>
 
-        <form>
-            <input type="text" placeholder="Enter initials" />
+        <!-- Initial entry -->
+        <form id="enterInitials">
+            <input id="initials" type="text" placeholder="Enter initials" value="" />
+            <button type="submit">Submit</button>
         </form>
+
+    </div>
+
+    <!-- Highscore table -->
+    <div id="scorePage" style="display: none;">
+        <h1>High Scores</h1>
+        <ol id="scoreList"></ol>
     </div>
 
 </body>
